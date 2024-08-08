@@ -10,7 +10,7 @@ set(PICO_EXAMPLES_PATH ${PROJECT_SOURCE_DIR})
 
 pico_sdk_init()
 # include_directories(/home/student01/pico/pico-sdk/eigen)
-include_directories(/home/shohei/pico/eigen)
+include_directories(/Users/kokoro/Documents/drone_project/pico/eigen)
 
 add_executable(pico_copter
   pico_copter.cpp

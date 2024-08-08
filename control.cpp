@@ -101,7 +101,7 @@ uint16_t LineTraceCounter = 0;
 uint16_t Linetrace_counter_for_control = 0;
 
 // Control
-float FR_duty, FL_duty, RR_duty, RL_duty;
+float FR_duty, FL_duty,MR_duty, ML_duty, RR_duty, RL_duty;
 float P_com, Q_com, R_com;
 float T_ref;
 float T_stick;
@@ -141,7 +141,7 @@ float Logdata[LOGDATANUM] = {0.0};
 // State Machine
 uint8_t LockMode = 0;
 float Disable_duty = 0.1;
-float Flight_duty = 0.18; // 0.2/////////////////
+float Flight_duty = 0.05; // 0.2///////////////// 0.18
 uint8_t OverG_flag = 0;
 unsigned short Linetrace_counter = 0;
 
@@ -194,7 +194,7 @@ void send_data_via_uart(void);
 #define AVERAGE 2000
 #define KALMANWAIT 6000
 
-// LED Control
+// // LED Control
 void led_control(void)
 {
   static uint16_t cnt = 0;
@@ -460,9 +460,9 @@ void control_init(void)
   Velocity_filter.set_parameter(0.08, 0.025);
 
   // Rate control
-  p_pid.set_parameter(2.5, 100.0, 0.009, 0.125, 0.0025); //(2.2, 5, 0.01)
-  q_pid.set_parameter(2.5, 100.0, 0.009, 0.125, 0.0025); //(1.5, 1, 0.01)
-  r_pid.set_parameter(3.5, 10.0, 0.009, 0.125, 0.0025);  //(3.1, 1, 0.01)
+  p_pid.set_parameter(0.1, 10000.0, 0, 0.125, 0.0025); //ikaring(2.2, 5, 0.01) itocopter(2.5, 100, 0.009)
+  q_pid.set_parameter(0.1, 10000.0, 0, 0.125, 0.0025); //ikaring(1.5, 1, 0.01) itocopter(2.5, 100, 0.009)
+  r_pid.set_parameter(0.1, 10000.0, 0, 0.125, 0.0025);  //ikaring(3.1, 1, 0.01) itocopter(3.5, 10, 0.009)
   // Angle control
   phi_pid.set_parameter(8.0, 20.0, 0.007, 0.125, 0.01);   // 6.0
   theta_pid.set_parameter(8.0, 20.0, 0.007, 0.125, 0.01); // 6.0
@@ -519,6 +519,8 @@ void motor_stop(void)
 {
   set_duty_fr(0.0);
   set_duty_fl(0.0);
+  set_duty_mr(0.0);
+  set_duty_ml(0.0);
   set_duty_rr(0.0);
   set_duty_rl(0.0);
 }
@@ -741,41 +743,41 @@ void rate_control(void)
     Rocking_timer = 0.0;
   }
 
-  else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] < 200) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] > 500) && (Chdata[ROCKING] < 200) && i2c_connect == 0)
-  {
-    Flight_mode = NORMAL;
-    Red_flag = 0;
-    Rocking_timer = 0.0;
-  }
+  // else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] < 200) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] > 500) && (Chdata[ROCKING] < 200) && i2c_connect == 0)
+  // {
+  //   Flight_mode = NORMAL;
+  //   Red_flag = 0;
+  //   Rocking_timer = 0.0;
+  // }
 
-  else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] < 200) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] < 200) && (Chdata[ROCKING] > 500))
-  {
-    Flight_mode = ROCKING;
-    Red_flag = 0;
-  }
+  // else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] < 200) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] < 200) && (Chdata[ROCKING] > 500))
+  // {
+  //   Flight_mode = ROCKING;
+  //   Red_flag = 0;
+  // }
 
-  else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] < 200) && (Chdata[LINETRACE] > 500) && (Chdata[ROCKING] < 200) && i2c_connect == 1)
-  {
-    Flight_mode = LINETRACE;
-    Red_flag = 0;
-    Rocking_timer = 0.0;
-  }
+  // else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] < 200) && (Chdata[LINETRACE] > 500) && (Chdata[ROCKING] < 200) && i2c_connect == 1)
+  // {
+  //   Flight_mode = LINETRACE;
+  //   Red_flag = 0;
+  //   Rocking_timer = 0.0;
+  // }
 
-  else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] > 500) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] < 200) && (Chdata[ROCKING] < 200))
-  {
-    Flight_mode = REDCIRCLE;
-    Rocking_timer = 0.0;
-  }
+  // else if ((Chdata[SERVO] < 200) && (Chdata[REDCIRCLE] > 500) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] < 200) && (Chdata[ROCKING] < 200))
+  // {
+  //   Flight_mode = REDCIRCLE;
+  //   Rocking_timer = 0.0;
+  // }
 
-  else if ((Chdata[SERVO] > 500) && (Chdata[REDCIRCLE] < 200) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] < 200) && (Chdata[ROCKING] < 200))
-  {
-    Flight_mode = SERVO;
-    Rocking_timer = 0.0;
-  }
+  // else if ((Chdata[SERVO] > 500) && (Chdata[REDCIRCLE] < 200) && (Chdata[LOG] < 200) && (Chdata[LINETRACE] < 200) && (Chdata[ROCKING] < 200))
+  // {
+  //   Flight_mode = SERVO;
+  //   Rocking_timer = 0.0;
+  // }
 
-  else
-  {
-  }
+  // else
+  // {
+  // }
 
   // Get Bias
   // Pbias = Xe(4, 0);
@@ -792,7 +794,7 @@ void rate_control(void)
   q_ref = Qref;
   r_ref = Rref;
   if (Flight_mode != LINETRACE)
-    T_ref = 0.5 * BATTERY_VOLTAGE * (float)(Chdata[2] - CH3MIN) / (CH3MAX - CH3MIN);
+    T_ref = 0.5*BATTERY_VOLTAGE * (float)(Chdata[2] - CH3MIN) / (CH3MAX - CH3MIN);
 
   // //高度制御テスト用のコード
   // if(Chdata[SERVO] > 500){
@@ -871,12 +873,19 @@ void rate_control(void)
   // RR_duty = (T_ref + (-P_com - Q_com + R_com) * 0.25) * 0.1351;
   // RL_duty = (T_ref + (P_com - Q_com - R_com) * 0.25) * 0.1351;
 
-  FR_duty = (T_ref*0.1667 + (-0.0714*P_com + 0.2886*Q_com - 0.1429*R_com) * 0.25) * 0.1351;
-  FL_duty = (T_ref*0.1667 + (0.0714*P_com + 0.2886*Q_com + 0.1429*R_com) * 0.25) * 0.1351;
-  MR_duty = (T_ref*0.1667 + (-0.2857*P_com + 0*Q_com -0.0714*R_com) * 0.25) * 0.1351;
-  ML_duty = (T_ref*0.1667 + (0.2857*P_com + 0*Q_com + 0.0714*R_com) * 0.25) * 0.1351;
-  RR_duty = (T_ref*0.1667 + (-0.3571*P_com - 0.2886*Q_com + 0.2857*R_com) * 0.25) * 0.1351;
-  RL_duty = (T_ref*0.1667 + (0.3571*P_com - 0.2886*Q_com - 0.2857*R_com) * 0.25) * 0.1351;
+  // FR_duty = (T_ref*0.16666667 + (-0.16666667*P_com + 0.28867513*Q_com - 0.16666667*R_com) * 0.25) * 0.0901;
+  // FL_duty = (T_ref*0.16666667 + (0.16666667*P_com  + 0.28867513*Q_com + 0.16666667*R_com) * 0.25) * 0.0901;
+  // MR_duty = (T_ref*0.16666667 + (-0.33333333*P_com + 0*Q_com          + 0.16666667*R_com) * 0.25) * 0.0901;
+  // ML_duty = (T_ref*0.16666667 + (0.33333333*P_com  + 0*Q_com          - 0.16666667*R_com) * 0.25) * 0.0901;
+  // RR_duty = (T_ref*0.16666667 + (-0.16666667*P_com - 0.28867513*Q_com - 0.16666667*R_com) * 0.25) * 0.0901;
+  // RL_duty = (T_ref*0.16666667 + (0.16666667*P_com  - 0.28867513*Q_com + 0.16666667*R_com) * 0.25) * 0.0901;
+
+  FR_duty = (T_ref*0.5 + (-0.33333334*P_com + 0.57735026*Q_com - 0.33333334*R_com) * 0.25) * 0.0901;
+  FL_duty = (T_ref*0.5 + (0.33333334*P_com  + 0.57735026*Q_com + 0.33333334*R_com) * 0.25) * 0.0901;
+  MR_duty = (T_ref*0.5 + (-0.66666666*P_com + 0*Q_com          + 0.33333334*R_com) * 0.25) * 0.0901;
+  ML_duty = (T_ref*0.5 + (0.66666666*P_com  + 0*Q_com          - 0.33333334*R_com) * 0.25) * 0.0901;
+  RR_duty = (T_ref*0.5 + (-0.33333334*P_com - 0.57735026*Q_com - 0.33333334*R_com) * 0.25) * 0.0901;
+  RL_duty = (T_ref*0.5 + (0.33333334*P_com  - 0.57735026*Q_com + 0.33333334*R_com) * 0.25) * 0.0901;
 
   // スロットルの値が直接反映される（ロールピッチヨー制御なし）
   //  FR_duty = (T_ref)*0.0901;
@@ -1019,6 +1028,7 @@ void angle_control(void)
         if (Flight_mode != ROCKING)
         {
           Phi_ref = Phi_trim + 0.3 * M_PI * (float)(Chdata[3] - (CH4MAX + CH4MIN) * 0.5) * 2 / (CH4MAX - CH4MIN);
+          printf("phi_ref,%f\r\n",Phi_ref);
         }
         Theta_ref = Theta_trim + 0.3 * M_PI * (float)(Chdata[1] - (CH2MAX + CH2MIN) * 0.5) * 2 / (CH2MAX - CH2MIN);
         Psi_ref = 0.8 * M_PI * (float)(Chdata[0] - (CH1MAX + CH1MIN) * 0.5) * 2 / (CH1MAX - CH1MIN);
@@ -1541,45 +1551,45 @@ void sensor_read(void)
   My /= mag_norm;
   Mz /= mag_norm;
 
-  // 高度センサーから値受け取るコード
-  uint8_t checkdata[2];
-  int result = i2c_read_blocking(I2C_PORT, dev, checkdata, sizeof(checkdata), false);
-  if (result != 2)
-  {
-    // I2C通信エラーチェック
-    // エラーが発生した場合、I2C通信が切断されたとみなす
-    // ここで適切なエラーハンドリングを行う
-    Flight_mode = NORMAL;
-    i2c_connect = 0;
-    printf("I2C通信エラーが発生しました。 %4d\n", result);
-  }
-  else
-  {
-    // printf("I2C通信接続できました。 %4d\n",result);
-    // 高度センサーから値受け取るコード
-    last_Kalman_alt = Kalman_alt;
-    if (isDataReady == 0)
-    {
-      Status = VL53L1X_CheckForDataReady(dev, &isDataReady);
-    }
-    else if (isDataReady == 1)
-    {
-      // data_count = data_count + 1;
-      isDataReady = 0;
-      Status = VL53L1X_GetRangeStatus(dev, &rangeStatus);
-      Status = VL53L1X_GetDistance(dev, &distance);
-      Status = VL53L1X_ClearInterrupt(dev);
-      // z_acc  = Az-9.80665;
-      z_acc = Az - 9.76548;
-      lotate_altitude_init(Theta, Psi, Phi);
-      lotated_distance = lotate_altitude(distance);
-      Kalman_alt = Kalman_PID(lotated_distance, z_acc);
-      if ((Kalman_alt - last_Kalman_alt) > 500 || (Kalman_alt - last_Kalman_alt) < 500)
-      {
-        Kalman_alt = last_Kalman_alt;
-      }
-    }
-  }
+  // // 高度センサーから値受け取るコード
+  // uint8_t checkdata[2];
+  // int result = i2c_read_blocking(I2C_PORT, dev, checkdata, sizeof(checkdata), false);
+  // if (result != 2)
+  // {
+  //   // I2C通信エラーチェック
+  //   // エラーが発生した場合、I2C通信が切断されたとみなす
+  //   // ここで適切なエラーハンドリングを行う
+  //   Flight_mode = NORMAL;
+  //   i2c_connect = 0;
+  //   printf("I2C通信エラーが発生しました。 %4d\n", result);
+  // }
+  // else
+  // {
+  //   // printf("I2C通信接続できました。 %4d\n",result);
+  //   // 高度センサーから値受け取るコード
+  //   last_Kalman_alt = Kalman_alt;
+  //   if (isDataReady == 0)
+  //   {
+  //     Status = VL53L1X_CheckForDataReady(dev, &isDataReady);
+  //   }
+  //   else if (isDataReady == 1)
+  //   {
+  //     // data_count = data_count + 1;
+  //     isDataReady = 0;
+  //     Status = VL53L1X_GetRangeStatus(dev, &rangeStatus);
+  //     Status = VL53L1X_GetDistance(dev, &distance);
+  //     Status = VL53L1X_ClearInterrupt(dev);
+  //     // z_acc  = Az-9.80665;
+  //     z_acc = Az - 9.76548;
+  //     lotate_altitude_init(Theta, Psi, Phi);
+  //     lotated_distance = lotate_altitude(distance);
+  //     Kalman_alt = Kalman_PID(lotated_distance, z_acc);
+  //     if ((Kalman_alt - last_Kalman_alt) > 500 || (Kalman_alt - last_Kalman_alt) < 500)
+  //     {
+  //       Kalman_alt = last_Kalman_alt;
+  //     }
+  //   }
+  // }
 
   // OpenMV通信用 データ受信 カメラの中心と対象物との距離を測定
   if ((Flight_mode == REDCIRCLE) && (i2c_connect == 1))

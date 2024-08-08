@@ -12,31 +12,38 @@ int main(void)
   
   gpio_init(LED_PIN);
   gpio_set_dir(LED_PIN, GPIO_OUT);
-  
+  printf("#start setup\r\n"); 
+
   //Initialize stdio for Pico
   stdio_init_all();
-  
+  printf("#init pico\r\n");
+
   //Initialize LSM9DS1
   imu_mag_init();
-  
+  printf("#init gyro\r\n");
+
   //Initialize Radio
   radio_init();
-  
+  printf("#init radio\r\n");
+
   //Initialize Variavle
   variable_init();
-  
+  printf("#init cariavle\r\n");
+
   //Initilize Control
   control_init();
-  Kalman_init();
-  initialize_Altitude();
+  // Kalman_init();
+  // initialize_Altitude();
+  printf("#init control\r\n");
 
-  //RGB LED off
+  // //RGB LED off
   rgbled_off();
   
   //Initialize PWM
   //Start 400Hz Interval
   ESC_calib= 0;
   pwm_init();
+  printf("#init pwm\r\n");
 
   while(start_wait)
   {
