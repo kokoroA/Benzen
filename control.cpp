@@ -460,13 +460,13 @@ void control_init(void)
   Velocity_filter.set_parameter(0.08, 0.025);
 
   // Rate control
-  p_pid.set_parameter(0.1, 10000.0, 0, 0.125, 0.0025); //ikaring(2.2, 5, 0.01) itocopter(2.5, 100, 0.009)
-  q_pid.set_parameter(0.1, 10000.0, 0, 0.125, 0.0025); //ikaring(1.5, 1, 0.01) itocopter(2.5, 100, 0.009)
-  r_pid.set_parameter(0.1, 10000.0, 0, 0.125, 0.0025);  //ikaring(3.1, 1, 0.01) itocopter(3.5, 10, 0.009)
+  p_pid.set_parameter(4, 100.0, 0, 0.125, 0.0025); //ikaring(2.2, 5, 0.01) itocopter(2.5, 100, 0.009)
+  q_pid.set_parameter(2, 100.0, 0, 0.125, 0.0025); //ikaring(1.5, 1, 0.01) itocopter(2.5, 100, 0.009)
+  r_pid.set_parameter(3, 10000.0, 0, 0.125, 0.0025);  //ikaring(3.1, 1, 0.01) itocopter(3.5, 10, 0.009)
   // Angle control
-  phi_pid.set_parameter(8.0, 20.0, 0.007, 0.125, 0.01);   // 6.0
-  theta_pid.set_parameter(8.0, 20.0, 0.007, 0.125, 0.01); // 6.0
-  psi_pid.set_parameter(0, 1000, 0.01, 0.125, 0.01);
+  phi_pid.set_parameter(6, 8.0, 0, 0.125, 0.01);   // 6.0  8.0,20,0.007
+  theta_pid.set_parameter(6, 8.0, 0, 0.125, 0.01); // 6.0  8.0,20,0.007
+  psi_pid.set_parameter(0, 10000, 0, 0.125, 0.01);      //0 1000 0.01
 
   // Linetrace
   // velocity control
@@ -880,18 +880,20 @@ void rate_control(void)
   // RR_duty = (T_ref*0.16666667 + (-0.16666667*P_com - 0.28867513*Q_com - 0.16666667*R_com) * 0.25) * 0.0901;
   // RL_duty = (T_ref*0.16666667 + (0.16666667*P_com  - 0.28867513*Q_com + 0.16666667*R_com) * 0.25) * 0.0901;
 
-  FR_duty = (T_ref*0.5 + (-0.33333334*P_com + 0.57735026*Q_com - 0.33333334*R_com) * 0.25) * 0.0901;
-  FL_duty = (T_ref*0.5 + (0.33333334*P_com  + 0.57735026*Q_com + 0.33333334*R_com) * 0.25) * 0.0901;
-  MR_duty = (T_ref*0.5 + (-0.66666666*P_com + 0*Q_com          + 0.33333334*R_com) * 0.25) * 0.0901;
-  ML_duty = (T_ref*0.5 + (0.66666666*P_com  + 0*Q_com          - 0.33333334*R_com) * 0.25) * 0.0901;
-  RR_duty = (T_ref*0.5 + (-0.33333334*P_com - 0.57735026*Q_com - 0.33333334*R_com) * 0.25) * 0.0901;
-  RL_duty = (T_ref*0.5 + (0.33333334*P_com  - 0.57735026*Q_com + 0.33333334*R_com) * 0.25) * 0.0901;
+  //ピッチのプラマイ逆かも
+  FR_duty = (T_ref*1 + (-0.48*P_com + 0.84*Q_com - 0.48*R_com) * 0.25) * 0.0901;
+  FL_duty = (T_ref*1 + (0.48*P_com  + 0.84*Q_com + 0.48*R_com) * 0.25) * 0.0901;
+  MR_duty = (T_ref*1 + (-0.96*P_com + 0*Q_com   + 0.48*R_com) * 0.25) * 0.0901;
+  ML_duty = (T_ref*1 + (0.96*P_com  + 0*Q_com   - 0.48*R_com) * 0.25) * 0.0901;
+  RR_duty = (T_ref*1 + (-0.48*P_com - 0.84*Q_com - 0.48*R_com) * 0.25) * 0.0901;
+  RL_duty = (T_ref*1 + (0.48*P_com  - 0.84*Q_com + 0.48*R_com) * 0.25) * 0.0901;
 
-  // スロットルの値が直接反映される（ロールピッチヨー制御なし）
-  //  FR_duty = (T_ref)*0.0901;
-  //  FL_duty = (T_ref)*0.0901;
-  //  RR_duty = (T_ref)*0.0901;
-  //  RL_duty = (T_ref)*0.0901;
+  // FR_duty = (T_ref*1 + (-P_com + Q_com - R_com) * 0.25) * 0.0901;
+  // FL_duty = (T_ref*1 + (P_com  + Q_com + R_com) * 0.25) * 0.0901;
+  // MR_duty = (T_ref*1 + (-P_com + 0*Q_com +R_com) * 0.25) * 0.0901;
+  // ML_duty = (T_ref*1 + (P_com  + 0*Q_com -R_com) * 0.25) * 0.0901;
+  // RR_duty = (T_ref*1 + (-P_com - Q_com - R_com) * 0.25) * 0.0901;
+  // RL_duty = (T_ref*1 + (P_com  -Q_com + R_com) * 0.25) * 0.0901;
 
   float minimum_duty = 0.1;
   const float maximum_duty = 0.95;
@@ -1029,6 +1031,8 @@ void angle_control(void)
         {
           Phi_ref = Phi_trim + 0.3 * M_PI * (float)(Chdata[3] - (CH4MAX + CH4MIN) * 0.5) * 2 / (CH4MAX - CH4MIN);
           printf("phi_ref,%f\r\n",Phi_ref);
+          // printf("1 : %f\r\n",(float)(Chdata[3] - (CH4MAX + CH4MIN) * 0.5) * 2 / (CH4MAX - CH4MIN));
+          // printf("2 : %f\r\n",(float)(Chdata[3] - (CH4MAX + CH4MIN))  / (CH4MAX - CH4MIN));
         }
         Theta_ref = Theta_trim + 0.3 * M_PI * (float)(Chdata[1] - (CH2MAX + CH2MIN) * 0.5) * 2 / (CH2MAX - CH2MIN);
         Psi_ref = 0.8 * M_PI * (float)(Chdata[0] - (CH1MAX + CH1MIN) * 0.5) * 2 / (CH1MAX - CH1MIN);
