@@ -47,9 +47,9 @@ CMakeFiles/pico_copter.dir/Users/kokoro/Documents/drone_project/pico/pico-sdk/li
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/assert.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/assert.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/generated/pico_base/pico/version.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/generated/pico_base/pico/version.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/config.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/generated/pico_base/pico/config_autogen.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/generated/pico_base/pico/config_autogen.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/boards/include/boards/pico.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \

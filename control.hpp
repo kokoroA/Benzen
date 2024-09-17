@@ -19,7 +19,8 @@ using Eigen::Matrix;
 using Eigen::PartialPivLU;
 using namespace Eigen;
 
-#define BATTERY_VOLTAGE (11.1)
+// #define BATTERY_VOLTAGE (11.1)
+#define BATTERY_VOLTAGE (7.4)
 #define NORMAL 0
 // #define ROCKING 1
 // #define AUTO 2

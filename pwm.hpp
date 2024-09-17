@@ -16,9 +16,12 @@
 #define DUTYMIN 1375
 #define DUTYMAX 2375
 
-//#define SERVO_HOOK 1813
-#define SERVO_HOOK 1800
-#define SERVO_RELEASE 625
+// //#define SERVO_HOOK 1813
+// #define SERVO_HOOK 1800
+// #define SERVO_RELEASE 625
+
+#define SERVO_HOOK 3100
+#define SERVO_RELEASE 550
 
 //グローバル変数
 extern uint8_t ESC_calib;

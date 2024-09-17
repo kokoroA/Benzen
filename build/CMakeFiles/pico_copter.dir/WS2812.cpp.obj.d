@@ -1,6 +1,6 @@
 CMakeFiles/pico_copter.dir/WS2812.cpp.obj: \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/WS2812.cpp \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/WS2812.hpp \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/WS2812.cpp \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/WS2812.hpp \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/assert.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
@@ -25,9 +25,9 @@ CMakeFiles/pico_copter.dir/WS2812.cpp.obj: \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/generated/pico_base/pico/version.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/generated/pico_base/pico/version.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/config.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/generated/pico_base/pico/config_autogen.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/generated/pico_base/pico/config_autogen.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/boards/include/boards/pico.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
@@ -51,7 +51,7 @@ CMakeFiles/pico_copter.dir/WS2812.cpp.obj: \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/WS2812.pio.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/WS2812.pio.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h

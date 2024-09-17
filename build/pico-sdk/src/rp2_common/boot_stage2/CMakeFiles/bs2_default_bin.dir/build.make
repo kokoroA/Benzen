@@ -53,10 +53,10 @@ RM = /usr/local/Cellar/cmake/3.27.8/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen
+CMAKE_SOURCE_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build
+CMAKE_BINARY_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build
 
 # Utility rule file for bs2_default_bin.
 
@@ -69,8 +69,8 @@ include pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/progr
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin: pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
 
 pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin: pico-sdk/src/rp2_common/boot_stage2/bs2_default.elf
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating bs2_default.bin"
-	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2 && /usr/local/bin/arm-none-eabi-objcopy -Obinary /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.elf /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating bs2_default.bin"
+	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2 && /usr/local/bin/arm-none-eabi-objcopy -Obinary /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.elf /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
 
 bs2_default_bin: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin
 bs2_default_bin: pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
@@ -82,10 +82,10 @@ pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/build: bs2_de
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/build
 
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/clean:
-	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2 && $(CMAKE_COMMAND) -P CMakeFiles/bs2_default_bin.dir/cmake_clean.cmake
+	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2 && $(CMAKE_COMMAND) -P CMakeFiles/bs2_default_bin.dir/cmake_clean.cmake
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/clean
 
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/depend:
-	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/boot_stage2 /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2 /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/boot_stage2 /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2 /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/depend
 

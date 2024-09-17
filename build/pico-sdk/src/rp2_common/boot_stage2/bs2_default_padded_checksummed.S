@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb

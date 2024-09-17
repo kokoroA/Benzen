@@ -1,6 +1,6 @@
 CMakeFiles/pico_copter.dir/radio.cpp.obj: \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/radio.cpp \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/radio.hpp \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/radio.cpp \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/radio.hpp \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/stdio.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/_ansi.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/newlib.h \
@@ -44,9 +44,9 @@ CMakeFiles/pico_copter.dir/radio.cpp.obj: \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/stdint.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/_intsup.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/generated/pico_base/pico/version.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/generated/pico_base/pico/version.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/common/pico_base/include/pico/config.h \
- /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/generated/pico_base/pico/config_autogen.h \
+ /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/generated/pico_base/pico/config_autogen.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/boards/include/boards/pico.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /Users/kokoro/Documents/drone_project/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \

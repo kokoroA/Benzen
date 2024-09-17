@@ -32,8 +32,8 @@ int main(void)
 
   //Initilize Control
   control_init();
-  // Kalman_init();
-  // initialize_Altitude();
+  Kalman_init();
+  initialize_Altitude();
   printf("#init control\r\n");
 
   // //RGB LED off
@@ -61,7 +61,7 @@ int main(void)
   
   while(1)
   {
-    //printf("Arm_flag:%d LockMode:%d\n",Arm_flag, LockMode);
+    // printf("Arm_flag:%d LockMode:%d\n",Arm_flag, LockMode);
     tight_loop_contents();
     while (Logoutputflag==1){
       log_output();

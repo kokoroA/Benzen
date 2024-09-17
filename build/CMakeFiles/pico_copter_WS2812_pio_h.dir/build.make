@@ -53,10 +53,10 @@ RM = /usr/local/Cellar/cmake/3.27.8/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen
+CMAKE_SOURCE_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build
+CMAKE_BINARY_DIR = /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build
 
 # Utility rule file for pico_copter_WS2812_pio_h.
 
@@ -68,9 +68,9 @@ include CMakeFiles/pico_copter_WS2812_pio_h.dir/progress.make
 
 CMakeFiles/pico_copter_WS2812_pio_h: WS2812.pio.h
 
-WS2812.pio.h: /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/WS2812.pio
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating WS2812.pio.h"
-	pioasm/pioasm -o c-sdk /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/WS2812.pio /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/WS2812.pio.h
+WS2812.pio.h: /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/WS2812.pio
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating WS2812.pio.h"
+	pioasm/pioasm -o c-sdk /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/WS2812.pio /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/WS2812.pio.h
 
 pico_copter_WS2812_pio_h: CMakeFiles/pico_copter_WS2812_pio_h
 pico_copter_WS2812_pio_h: WS2812.pio.h
@@ -86,6 +86,6 @@ CMakeFiles/pico_copter_WS2812_pio_h.dir/clean:
 .PHONY : CMakeFiles/pico_copter_WS2812_pio_h.dir/clean
 
 CMakeFiles/pico_copter_WS2812_pio_h.dir/depend:
-	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/build/CMakeFiles/pico_copter_WS2812_pio_h.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build /Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/build/CMakeFiles/pico_copter_WS2812_pio_h.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/pico_copter_WS2812_pio_h.dir/depend
 

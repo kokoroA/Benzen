@@ -7,14 +7,14 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/CMakeLists.txt"
+  "/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/CMakeLists.txt"
   "CMakeFiles/3.27.8/CMakeASMCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeSystem.cmake"
   "elf2uf2/tmp/ELF2UF2Build-mkdirs.cmake"
   "pico-sdk/src/rp2_common/cyw43_driver/pioasm/tmp/PioasmBuild-mkdirs.cmake"
-  "/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen/pico_sdk_import.cmake"
+  "/Users/kokoro/Documents/drone_project/pico/pico-sdk/Benzen_new/pico_sdk_import.cmake"
   "/Users/kokoro/Documents/drone_project/pico/pico-sdk/CMakeLists.txt"
   "/Users/kokoro/Documents/drone_project/pico/pico-sdk/cmake/Platform/PICO.cmake"
   "/Users/kokoro/Documents/drone_project/pico/pico-sdk/cmake/pico_pre_load_platform.cmake"

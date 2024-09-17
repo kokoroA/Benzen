@@ -150,12 +150,14 @@ void printData(void)
 
 void initialize_Altitude(void)
 {
+  // printf("alt_1\r\n");
   stdio_init_all();
   i2c_init(I2C_PORT,i2C_CLOCK);//ハードウェアの初期化
   gpio_set_function(SDA_PIN,GPIO_FUNC_I2C);//GPIO機能をi2cに選択(SDA)
   gpio_set_function(SCL_PIN,GPIO_FUNC_I2C);//GPIO機能をi2cに選択(SCL)
   gpio_set_pulls(SDA_PIN, true, false);// enable internal pull-up of SDA_PIN=GP26
   gpio_set_pulls(SCL_PIN, true, false);// enable internal pull-up of SCL_PIN=GP27
+  // printf("alt_2\r\n");
   // /* Platform Initialization code here*/
   // /* Wait for device booted*/
   sleep_ms(3000);
@@ -163,6 +165,7 @@ void initialize_Altitude(void)
     Status = VL53L1X_BootState(dev, &state);
     sleep_ms(ms);
   };
+  // printf("alt_3\r\n");
   // /* Sensor Initialization */
   Status = VL53L1X_SensorInit(dev);
   // /* Modify the default configuration */
@@ -173,6 +176,7 @@ void initialize_Altitude(void)
   Status = VL53L1X_SetInterMeasurementInMs(dev,20);
   //Enable the ranging
   Status = VL53L1X_StartRanging(dev);
+  printf("alt_4\r\n");
 }
 
 void get_Altitude(void)

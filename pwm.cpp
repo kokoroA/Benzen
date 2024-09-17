@@ -88,7 +88,7 @@ void pwm_init()
 }
 
 
-void set_duty_fr(float duty)
+void set_duty_rr(float duty)
 {
     if (duty>0.97)duty=0.97;  
     if (duty<0.01)duty=0.01;
@@ -99,7 +99,7 @@ void set_duty_fr(float duty)
     //printf("%4.0f ", duty);
 }
 
-void set_duty_fl(float duty)
+void set_duty_fr(float duty)
 {
     if (duty>0.97)duty=0.97;  
     if (duty<0.01)duty=0.01;
@@ -110,7 +110,7 @@ void set_duty_fl(float duty)
     //printf("%4.0f ", duty);
 }
 
-void set_duty_mr(float duty)
+void set_duty_rl(float duty)
 {
     if (duty>0.97)duty=0.97;  
     if (duty<0.01)duty=0.01;
@@ -121,7 +121,7 @@ void set_duty_mr(float duty)
     //printf("%4.0f ", duty);
 }
 
-void set_duty_ml(float duty)
+void set_duty_fl(float duty)
 {
     if (duty>0.97)duty=0.97;  
     if (duty<0.01)duty=0.01;
@@ -132,7 +132,7 @@ void set_duty_ml(float duty)
     //printf("%4.0f ", duty);
 }
 
-void set_duty_rr(float duty)
+void set_duty_ml(float duty)
 {
     if (duty>0.97)duty=0.97;  
     if (duty<0.01)duty=0.01;
@@ -143,7 +143,7 @@ void set_duty_rr(float duty)
     //printf("%4.0f ", duty);
 }
 
-void set_duty_rl(float duty)
+void set_duty_mr(float duty)
 {
     if (duty>0.97)duty=0.97;  
     if (duty<0.01)duty=0.01;
@@ -158,9 +158,11 @@ void set_duty_rl(float duty)
 void payload_hook(void)
 {
     pwm_set_chan_level(Slice_num_servo, PWM_CHAN_A, SERVO_HOOK);
+    // printf("hook\n");
 }
 
 void payload_relese(void)
 {
     pwm_set_chan_level(Slice_num_servo, PWM_CHAN_A, SERVO_RELEASE);
+    // printf("release\n");
 }

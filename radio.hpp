@@ -30,8 +30,9 @@
 #define SERVO 4
 #define REDCIRCLE 5
 #define LINETRACE 7
-#define ROCKING 8
-
+// #define T_ref_up 7
+#define ROCKING 100 //8
+#define HOVERING 8
 
 #define UART_ID2 uart1
 #define BAUD_RATE2 9600
