@@ -76,20 +76,20 @@ float ie_v = 0;
 float observe_y;
 
 // float Kp = 0.044; // 0.08   0.042
-float Kp = 0.045; //Benzen
+float Kp = 0.06; //Benzen  T_ref:0.6:0.045  0.05
 // float Ki = 900;//400Hz
 //float Ki = 128;//57 58 Hz    129  128.571
 //float Ki = 112.5;//50Hz
 // float Ki = 31;//40Hz  90  45  43  42
-float Ki = 100000; //Benzen
+float Ki = 100000; //Benzen 100000 100
 float Kd = 0;
 // float Kp_v = 0.0026; //0.003 0.00172
-float Kp_v = 0.0002; //Benzen
+float Kp_v = 0.00025; //Benzen  T_ref:0.6:0.0002  0.00025
 // float Ki_v = 300;//400Hz
 //float Ki_v = 42;//57 58Hz    43 42.857
 //float Ki_v = 37.5;//50Hz
 // float Ki_v = 4;//40Hz  30  15  13  12
-float Ki_v = 100000;//Benzen
+float Ki_v = 100000;//Benzen 100000 100
 float Kd_v = 0;
 float u = 0;
 float u_v = 0;
@@ -332,12 +332,17 @@ float alt_PID(float ref_alt){
     u_n(0,0) = Kp * (error + integral + differential);
     u = u_n(0,0);
 
+    last_error = error;
+
     // //PID for velocity
     error_v = u - mu_Yn_est(0,0);
     integral_v = integral_v + (h_kalman * (error_v + last_error_v)) / (2 * Ki_v);
     differential_v = (((2 * eta * Kd_v - h_kalman) * differential) / (2 * eta * Kd_v + h_kalman)) + ((2 * Kd_v) * (error_v - last_error_v)) / (2 * eta * Kd_v + h_kalman);
     u_n_v(0,0) = Kp_v * (error_v + integral_v + differential_v);
     u_v = u_n_v(0,0);
+
+    last_error_v = error_v;
+
 
     return u_v;
 }
